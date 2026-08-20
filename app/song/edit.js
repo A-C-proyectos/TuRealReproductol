@@ -1,9 +1,13 @@
 import { StyleSheet, View, Text } from "react-native";
 
-export default function Player(){
+export default function Edit(){
+
     return(
         <View>
-            <Text>Reprofuctor</Text>
+            <Text>
+                hola
+            </Text>
         </View>
     )
+
 }

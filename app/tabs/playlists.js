@@ -1,9 +1,11 @@
 import { StyleSheet, View, Text } from "react-native";
 
-export default function Player(){
+export default function Playlist(){
     return(
         <View>
-            <Text>Reprofuctor</Text>
+            <Text>
+                Hola
+            </Text>
         </View>
     )
 }
