@@ -1,25 +1,19 @@
 import {StyleSheet, Text, View} from 'react-native'
-
+import songList from '../components/ui/SongList'
+import SongList from '../../src/components/ui/SongList'
 
 export default function Search() {
     return(
         <View>
-            <Text>
-                Hola
-            </Text>
+            <SongList 
+                
+            />
         </View>
     )
 }
 
 const styles = StyleSheet.create({
 
-    texto: {
-        fontSize: 45,
-        color: 'green',
-        fontWeight: 'bold',
-        textAlign: 'center',
-
-    },
 
 })
 

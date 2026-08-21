@@ -6,7 +6,8 @@ export default function TabLayout() {
   return (
        <Tabs 
             screenOptions={{
-                tabBarStyle: { color: '#212121'} ,
+                tabBarStyle: { color: '#ffffff',
+                     backgroundColor: '#212121' },
                 tabBarActiveTintColor: '#fff',
                 tabBarInactiveTintColor: '#b1b1b',
                 tabBarActiveBackgroundColor: 'green',}}      
@@ -26,7 +27,7 @@ export default function TabLayout() {
             <Tabs.Screen
                 name="library"
                 options={{
-                    title: 'Libreria',
+                    title: 'Albumes',
                     headerShown: false,
                     tabBarIcon: ({color, size}) => (
                         <Ionicons name='albums' size={size} color={color}/>
