@@ -4,6 +4,9 @@ export type Song = {
     artist: string;
     album?: string;
     artwork?: string;
+    onlineUrl?: string;
+    localUrl?: string; 
     duration?: number;
-    url: string;
+    downloaded?: boolean;
+    isFavorite?: boolean;
 };
