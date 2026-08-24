@@ -7,8 +7,8 @@ export default function TabLayout() {
        <Tabs 
             screenOptions={{
                 tabBarStyle: { 
-                    color: '#ffffff',
-                    backgroundColor: '#212121' 
+                    color: '#ff0000',
+                    backgroundColor: '#e7e5e5' 
                 },
                 tabBarActiveTintColor: '#fff',
                 tabBarInactiveTintColor: '#b1b1b',
@@ -20,6 +20,7 @@ export default function TabLayout() {
                 options={{
                     title: 'Inicio',
                     headerShown: false,
+                    
                     tabBarIcon: ({color, size}) => (
                         <Ionicons name='home' size={size} color={color}/>
                     )
