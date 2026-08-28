@@ -3,6 +3,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { useAudioPlayer, useAudioPlayerStatus } from "expo-audio";
 import { Image, Platform, Pressable, StyleSheet, Text, View } from "react-native";
 import { musicLibrary } from "../src/data/music";
+import { getSong, hydrateSongs } from "../src/store/musicStore";
 
 function formatTime(totalSeconds) {
   const safeValue = Number.isFinite(totalSeconds) ? Math.max(0, totalSeconds) : 0;
@@ -15,14 +16,22 @@ export default function PlayerScreen() {
   const router = useRouter();
   const params = useLocalSearchParams();
   const songId = Array.isArray(params.songId) ? params.songId[0] : params.songId ?? musicLibrary[0].id;
-  const song = musicLibrary.find((item) => item.id === songId) ?? musicLibrary[0];
+  const paramSong = {
+    id: songId,
+    title: Array.isArray(params.title) ? params.title[0] : params.title,
+    artist: Array.isArray(params.artist) ? params.artist[0] : params.artist,
+    artwork: Array.isArray(params.artwork) ? params.artwork[0] : params.artwork,
+    audioUrl: Array.isArray(params.audioUrl) ? params.audioUrl[0] : params.audioUrl,
+  };
+  const song = musicLibrary.find((item) => item.id === songId) ?? getSong(songId) ?? paramSong;
 
   // Use bundled asset when available (require(...)) so web and native both work
-  const source = song.audio ?? (song.audioUrl ? { uri: song.audioUrl } : null);
+  const source = song.audio ?? (song.localUrl ? { uri: song.localUrl } : song.audioUrl ? { uri: song.audioUrl } : null);
   const player = useAudioPlayer(source, { updateInterval: 250 });
   const status = useAudioPlayerStatus(player);
 
   useEffect(() => {
+    hydrateSongs();
     // Prepare player with the new source (do not auto-play).
     if (!source) return;
     player.replace(source);

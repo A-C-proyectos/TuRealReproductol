@@ -1,5 +1,6 @@
 export type Song = {
     id: string;
+    videoId?: string;
     title: string;
     artist: string;
     album?: string;

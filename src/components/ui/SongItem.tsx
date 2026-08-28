@@ -1,12 +1,14 @@
 import { StyleSheet, View, Text, Image, Pressable } from "react-native";
+import { ReactNode } from "react";
 import { Song } from "../types/music";
 
 type Props = {
   song: Song;
   onPress: () => void;
+  actions?: ReactNode;
 };
 
-export default function SongItem({ song, onPress }: Props) {
+export default function SongItem({ song, onPress, actions }: Props) {
   return (
     <Pressable style={styles.card} onPress={onPress}>
       <Image
@@ -19,6 +21,7 @@ export default function SongItem({ song, onPress }: Props) {
         <Text style={styles.title}>{song.title}</Text>
         <Text style={styles.artist}>{song.artist}</Text>
       </View>
+      {actions}
     </Pressable>
   );
 }
